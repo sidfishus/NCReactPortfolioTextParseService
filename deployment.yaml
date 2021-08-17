@@ -14,7 +14,7 @@ spec:
             app: textparse-service
       spec:
          imagePullSecrets:
-         - name: mysecret
+         - name: <Replace>
          containers:
          - name: textparse-service
            image: chrissiddall.azurecr.io/ncreactportfoliotextparseservice:latest
