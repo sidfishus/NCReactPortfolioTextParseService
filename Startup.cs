@@ -26,7 +26,10 @@ namespace NCReactPortfolioTextParseService
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services
+                .AddControllers()
+                .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NCReactPortfolioTextParseService", Version = "v1" });
@@ -44,8 +47,6 @@ namespace NCReactPortfolioTextParseService
             }
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
