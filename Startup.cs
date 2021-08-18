@@ -15,6 +15,7 @@ namespace NCReactPortfolioTextParseService
 {
     public class Startup
     {
+        static readonly string CORS_NAME= "NCReactPortfolioWebsite";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,6 +35,16 @@ namespace NCReactPortfolioTextParseService
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NCReactPortfolioTextParseService", Version = "v1" });
             });
+
+#if !DEBUG
+            // Without this, receive CORS errors :(
+            // See https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-5.0 for more info.
+            services.AddCors(options =>
+            {
+                options.AddPolicy(CORS_NAME,
+                    builder => builder.WithOrigins("https://chrissiddall.azurefd.net"));
+            });
+#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +58,7 @@ namespace NCReactPortfolioTextParseService
             }
 
             app.UseRouting();
+            app.UseCors(CORS_NAME);
 
             app.UseEndpoints(endpoints =>
             {
