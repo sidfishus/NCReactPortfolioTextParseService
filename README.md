@@ -1,6 +1,4 @@
 # NCReactPortfolioTextParseService
 TextParse service of my .NET Core and React portfolio, moving to a Kubernetes and Microservice approach.
 
-TODO.
-
-Replace the PAT in nuget.config with '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' otherwise the 'dotnet restore' command will fail. This PAT only allows 'read package' access hence it's safe to export.
+In order to use this you will need a PAT with read package access to download the TextParse and SharedCS packages, however if I upload a PAT to Github it's automatically removed. To get around this you can either download these projects manually from the associated repositories, or send me a message/email to request a PAT.
